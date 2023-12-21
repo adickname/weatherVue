@@ -16,5 +16,3 @@ const changeName = () => {
     emits('sendName', placeNameInput.value.value)
 }
 </script>
-
-<style scoped></style>
