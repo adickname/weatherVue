@@ -6,8 +6,34 @@ export const forecast = async (lat, lon, units) => {
         const res = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${ApiKey}`
         );
+        const {
+            data: {
+                clouds: { all },
+                main: { temp, feels_like, pressure, humidity },
+                visibility,
+                rain,
+                snow,
+                dt,
+                wind,
+                weather: [{ description, icon }],
+            },
+        } = res;
         console.log(res.data);
+        return [
+            all,
+            temp,
+            feels_like,
+            pressure,
+            humidity,
+            visibility,
+            rain,
+            snow,
+            dt,
+            wind,
+            description,
+            icon,
+        ];
     } catch (error) {
-        console.error(error.response.data);
+        console.error(error.message);
     }
 };

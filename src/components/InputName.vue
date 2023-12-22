@@ -1,6 +1,6 @@
 <template>
     <label for="placeNameInput">
-        Please enter only english names
+        Enter place you are interested in
     </label>
     <input type="text" ref="placeNameInput" id="placeNameInput">
     <button @click="changeName">ok</button>

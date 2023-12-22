@@ -8,10 +8,14 @@ const AsyncWeather = defineAsyncComponent(() =>
 )
 const lat = ref(null)
 const lon = ref(null)
+const nameOfPlace = ref(null)
 const coordinating = async (name) => {
-  const res = await coordinates(name)
-  lat.value = res[0]
-  lon.value = res[1]
+  nameOfPlace.value = name
+  let res = await coordinates(name)
+  lat.value = null
+  lon.value = null
+  lat.value = await res[0]
+  lon.value = await res[1]
 }
 </script>
 
@@ -21,7 +25,8 @@ const coordinating = async (name) => {
   <Suspense>
     <template #default>
 
-      <AsyncWeather v-if="lat !== null && lon !== null" :lat="lat" :lon="lon" units="metric"></AsyncWeather>
+      <AsyncWeather v-if="lat !== null && lon !== null" :lat="lat" :lon="lon" units="metric" :name="nameOfPlace">
+      </AsyncWeather>
     </template>
     <template #fallback>
       <p>loading...</p>
