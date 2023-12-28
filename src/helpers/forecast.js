@@ -1,5 +1,5 @@
 import axios from "axios";
-const ApiKey = "1c06548de2a982279e6f0791780e569d";
+import { ApiKey } from "../../privateData";
 
 export const forecast = async (lat, lon, units) => {
     try {
