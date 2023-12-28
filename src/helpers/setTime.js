@@ -24,7 +24,15 @@ export const setTime = (unixTime) => {
             dayWord = "Saturday";
             break;
     }
-    const date = ` ${time.getHours()}:${time.getMinutes()}, ${dayWord}, ${time.getDate()}.${
+    let minutes = time.getMinutes();
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    let hours = time.getHours();
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
+    const date = ` ${hours}:${minutes}, ${dayWord}, ${time.getDate()}.${
         time.getMonth() + 1
     }, ${time.getFullYear()} `;
     return date;

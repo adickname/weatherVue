@@ -4,7 +4,6 @@
     </label>
     <input type="text" ref="placeNameInput" id="placeNameInput">
     <button @click="changeName">ok</button>
-    <p>{{ placeName }}</p>
 </template>
 
 <script setup>

@@ -18,7 +18,6 @@ export const forecast = async (lat, lon, units) => {
                 weather: [{ description, icon }],
             },
         } = res;
-        console.log(res.data);
         return [
             all,
             temp,
@@ -34,6 +33,6 @@ export const forecast = async (lat, lon, units) => {
             icon,
         ];
     } catch (error) {
-        console.error(error.message);
+        return [`Sorry, something went wrong.`, { error }];
     }
 };

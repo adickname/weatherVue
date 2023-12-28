@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, inject, provide } from 'vue';
 import { forecast } from '../helpers/forecast'
 import { setTime } from "../helpers/setTime"
 const props = defineProps(['lat', 'lon', 'units', 'name'])
@@ -8,21 +8,28 @@ const lon = ref(props.lon)
 const units = ref(props.units)
 const name = ref(props.name)
 const date = ref()
-let valuesToRender = await forecast(lat.value, lon.value, units.value)
+let res = await forecast(lat.value, lon.value, units.value)
+if (typeof res[0] === 'string') {
+    const changeErrorObject = inject('changeErrorObject')
+    changeErrorObject(res[1].error.message, res[0], res[1].error.fileName, res[1].error.lineNumber)
+}
+
 const [
     clouds, temp, feels_like, pressure, humidity, visibility, rain, snow, dt, wind, description, icon
-] = valuesToRender
+] = res
 const lastHourRain = rain?.['1h']
 const lastHourSnow = snow?.['1h']
 if (dt) {
     date.value = setTime(dt)
 }
 
+
+
 </script>
 
 <template>
     <main>
-        <div v-if="valuesToRender !== null && valuesToRender !== undefined" class="wrapper">
+        <div v-if="res !== null && res !== undefined" class="wrapper">
             <div class="nextToSelf">
                 <h1>{{ name }}</h1>
                 <img :src="`https://openweathermap.org/img/wn/${icon}@2x.png`" alt="">
@@ -51,6 +58,7 @@ if (dt) {
         </div>
     </main>
 </template>
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
