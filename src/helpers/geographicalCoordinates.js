@@ -10,6 +10,9 @@ export const coordinates = async (name) => {
         const lon = await res.data[0].lon;
         return [await lat, await lon];
     } catch (error) {
-        return [`Sorry, I can't set coordinates of this place`, { error }];
+        return [
+            `Sorry, I can't set coordinates of this place. If you are sure that the place exist please report an error.`,
+            { error },
+        ];
     }
 };

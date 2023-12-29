@@ -60,13 +60,10 @@ if (dt) {
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .wrapper {
     display: flex;
     flex-direction: column;
     background-color: cornflowerblue;
-    font-family: 'Roboto', sans-serif;
 }
 
 
