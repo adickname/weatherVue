@@ -49,7 +49,7 @@ const sendEmail = () => {
     height: 10%;
     font-size: 17px;
     border: none;
-    animation: appearenceErrorReporterButton .9 s backwards;
+    animation: appearenceErrorReporterButton 1s backwards;
 }
 
 @keyframes appearenceErrorReporterButton {
