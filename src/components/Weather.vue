@@ -61,7 +61,7 @@ windDeg.value = wind.deg + 'deg'
                             <path id="nav:2_3_" d="M64 1 17.9 127 64 99.8l46.1 27.2L64 1zm0 20.4 32.6 89.2L64 91.3V21.4z"
                                 style="fill:#191919" />
                         </g>
-                    </svg>{{ wind.deg }} {{ windDirection }}
+                    </svg>{{ windDirection }}
                 </p>
             </div>
             <p>There is {{ description }}</p>
@@ -92,7 +92,6 @@ windDeg.value = wind.deg + 'deg'
 .wrapper {
     display: flex;
     flex-direction: column;
-    background-color: cornflowerblue;
 }
 
 

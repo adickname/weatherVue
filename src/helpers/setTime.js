@@ -34,6 +34,6 @@ export const setTime = (unixTime) => {
     }
     const date = ` ${hours}:${minutes}, ${dayWord}, ${time.getDate()}.${
         time.getMonth() + 1
-    }, ${time.getFullYear()} `;
+    }. ${time.getFullYear()} `;
     return date;
 };

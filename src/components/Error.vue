@@ -1,7 +1,10 @@
 <template>
     <div class="wrapper">
         <p>{{ messageForUser }}</p>
-        <button @click="sendEmail" class="errorReporterButton">report an error</button>
+        <template v-if="buttonToHidden !== true">
+            <button @click="handleButtonFnctions" class="errorReporterButton">report an
+                error</button>
+        </template>
     </div>
 </template>
 
@@ -13,6 +16,7 @@ import { emailJsUserId } from "../../privateData"
 import { ref } from "vue";
 const props = defineProps(['errorObject'])
 const messageForUser = ref()
+const buttonToHidden = ref(false)
 messageForUser.value = props.errorObject.messageForUser
 const dataToEmialJs = {
     service_id: emailJsServiceId,
@@ -29,7 +33,14 @@ const sendEmail = () => {
     messageForUser.value = 'Thank you for reporting error'
 }
 
+const hiddenButton = () => {
+    buttonToHidden.value = true
+}
 
+const handleButtonFnctions = () => {
+    sendEmail()
+    hiddenButton()
+}
 </script>
 
 <style scoped>
@@ -49,7 +60,7 @@ const sendEmail = () => {
     height: 10%;
     font-size: 17px;
     border: none;
-    animation: appearenceErrorReporterButton 1s backwards;
+    animation: appearenceErrorReporterButton 2s backwards;
 }
 
 @keyframes appearenceErrorReporterButton {

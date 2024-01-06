@@ -1,8 +1,5 @@
 <template>
-    <label for="placeNameInput">
-        Enter place you are interested in
-    </label>
-    <input type="text" ref="placeNameInput" id="placeNameInput">
+    <input type="text" ref="placeNameInput" id="placeNameInput" placeholder="the place name">
     <button @click="changeName">ok</button>
 </template>
 
@@ -15,3 +12,14 @@ const changeName = () => {
     emits('sendName', placeNameInput.value.value)
 }
 </script>
+
+<style scoped>
+input {
+    margin: 10px 0 0 10px;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+}
+</style>
